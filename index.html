@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de 15 Años</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dress-3d-container" id="dress-container"></div>
+    
+    <div class="invitation-overlay">
+        <div class="invitation-card">
+            <div class="header">
+                <h1 class="title">Mis XV Años</h1>
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-line"></div>
+                </div>
+                <h2 class="name">Valentina</h2>
+            </div>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p>25 de Noviembre 2023</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <p>7:00 PM</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Salón Las Dalias</p>
+                </div>
+            </div>
+            
+            <div class="rsvp-section">
+                <p>Confirma tu asistencia antes del 10 de Noviembre</p>
+                <div class="rsvp-buttons">
+                    <button id="confirm-btn">Asistiré <i class="fas fa-heart"></i></button>
+                    <button id="decline-btn">Lamentablemente no</button>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>"Este día será mágico con tu presencia"</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">¡Gracias!</h3>
+            <p id="modal-message">Tu respuesta ha sido registrada.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
