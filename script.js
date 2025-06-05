@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Countdown mejorado
+    // Animación de texto de invitación
+    const invitationTexts = document.querySelectorAll('.invitation-text');
+    
+    function animateInvitationText() {
+        invitationTexts.forEach((text, index) => {
+            setTimeout(() => {
+                text.classList.add('animate-text');
+            }, index * 500);
+        });
+    }
+    
+    // Countdown premium
     function updateCountdown() {
         const targetDate = new Date('July 5, 2025 18:00:00').getTime();
         const now = new Date().getTime();
@@ -29,32 +40,32 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateCountdownChange(id, newValue) {
         const element = document.getElementById(id);
         if (element.textContent !== newValue) {
-            element.style.transform = 'scale(1.2)';
+            element.style.transform = 'scale(1.3)';
             element.style.color = '#D4AF37';
             setTimeout(() => {
                 element.textContent = newValue;
                 element.style.transform = 'scale(1)';
                 element.style.color = '#FFF';
-            }, 200);
+            }, 300);
         }
     }
     
-    // Actualizar cada segundo
+    // Efecto de brillo en botón dorado
+    const goldenBtn = document.querySelector('.golden-btn');
+    goldenBtn.addEventListener('mouseenter', function() {
+        this.querySelector('i').style.transform = 'rotate(15deg)';
+    });
+    
+    goldenBtn.addEventListener('mouseleave', function() {
+        this.querySelector('i').style.transform = 'rotate(0)';
+    });
+    
+    // Iniciar animaciones
+    setTimeout(animateInvitationText, 1000);
+    
+    // Actualizar countdown cada segundo
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
-    
-    // Efecto de brillo intermitente en la corona
-    function addCrownShineEffect() {
-        const crown = document.querySelector('.crown-icon');
-        
-        setInterval(() => {
-            const intensity = 0.7 + Math.random() * 0.5;
-            const blur = 5 + Math.random() * 10;
-            crown.style.textShadow = `0 0 ${blur}px rgba(0, 0, 0, ${intensity})`;
-        }, 2000);
-    }
-    
-    addCrownShineEffect();
     
     // Efecto de carga inicial
     setTimeout(() => {
@@ -64,4 +75,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Estilo inicial para el body
 document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 1s ease';
+document.body.style.transition = 'opacity 1.5s ease';
