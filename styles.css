@@ -1,4 +1,4 @@
-/* Estilos generales mejorados */
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #1a1a1a;
-    color: #f5f5f5;
+    background-color: #D4AF37; /* Fondo dorado */
+    color: #000;
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
     position: relative;
@@ -20,148 +20,93 @@ body {
     z-index: 1;
 }
 
-/* Efecto de brillo dorado */
-.gold-sparkle {
-    position: fixed;
-    width: 5px;
-    height: 5px;
-    background-color: #FFD700;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px #FFD700;
-    animation: sparkle 4s infinite;
-    z-index: 0;
+/* Bordes florales negros */
+.black-floral-border {
+    height: 40px;
+    width: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="%23000"><path d="M10,5 Q15,0 20,5 T30,5 T40,5 T50,5 T60,5 T70,5 T80,5 T90,5 T100,5" stroke="%23000" fill="none" stroke-width="2"/><path d="M15,10 Q20,15 25,10 T35,10 T45,10 T55,10 T65,10 T75,10 T85,10 T95,10" stroke="%23000" fill="none" stroke-width="2"/><circle cx="10" cy="10" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="50" cy="10" r="2"/><circle cx="70" cy="10" r="2"/><circle cx="90" cy="10" r="2"/></svg>');
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    margin: 0;
 }
 
-.gold-sparkle:nth-child(1) {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0.5s;
+.black-floral-border.top {
+    margin-bottom: 20px;
 }
 
-.gold-sparkle:nth-child(2) {
-    top: 70%;
-    left: 80%;
-    animation-delay: 1.5s;
+.black-floral-border.bottom {
+    margin-top: 20px;
 }
 
-.gold-sparkle:nth-child(3) {
-    top: 40%;
-    left: 50%;
-    animation-delay: 2.5s;
-}
-
-@keyframes sparkle {
-    0% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 1; transform: scale(1.2); }
-    100% { opacity: 0; transform: scale(0.5); }
-}
-
-/* Header mejorado */
+/* Header */
 .header {
     text-align: center;
     padding: 20px 0 30px;
     position: relative;
-    margin-bottom: 10px;
 }
 
 .crown-icon {
-    color: #FFD700;
+    color: #000;
     font-size: 2.5rem;
     margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    animation: shine 2s infinite alternate;
-}
-
-@keyframes shine {
-    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-    to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .title {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
-    color: #FFD700;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
-    letter-spacing: 1px;
+    color: #000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     margin-bottom: 5px;
 }
 
 .subtitle {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: #FFD700;
+    color: #000;
     font-weight: 400;
     letter-spacing: 3px;
-    text-transform: uppercase;
 }
 
-.gold-border {
+.black-divider {
     height: 2px;
-    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    background-color: #000;
     margin: 20px auto;
     width: 80%;
     position: relative;
 }
 
-.gold-border:before,
-.gold-border:after {
+.black-divider:before,
+.black-divider:after {
     content: '✻';
     position: absolute;
     top: -12px;
-    color: #FFD700;
+    color: #000;
     font-size: 1.2rem;
 }
 
-.gold-border:before {
+.black-divider:before {
     left: -5px;
 }
 
-.gold-border:after {
+.black-divider:after {
     right: -5px;
 }
 
-/* Tarjeta de invitación mejorada */
+/* Tarjeta de invitación */
 .invitation-card {
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 15px;
     padding: 30px 20px;
     margin: 30px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-.card-decoration {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>');
-    background-size: contain;
-    opacity: 0.7;
-}
-
-.card-decoration.top-left {
-    top: 10px;
-    left: 10px;
-}
-
-.card-decoration.top-right {
-    top: 10px;
-    right: 10px;
-    transform: rotate(90deg);
-}
-
-.card-decoration.bottom-left {
-    bottom: 10px;
-    left: 10px;
-    transform: rotate(270deg);
-}
-
-.card-decoration.bottom-right {
-    bottom: 10px;
-    right: 10px;
-    transform: rotate(180deg);
+.card-black-border {
+    height: 3px;
+    background-color: #000;
+    margin: 15px 0;
 }
 
 .card-content {
@@ -174,7 +119,7 @@ body {
     margin: 15px 0;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #e0e0e0;
+    color: #333;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -187,7 +132,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 1.4rem;
-    color: #FFD700;
+    color: #000;
     margin: 10px 0;
     letter-spacing: 1px;
 }
@@ -195,7 +140,7 @@ body {
 .and {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
-    color: #FFD700;
+    color: #000;
     margin: 5px 0;
 }
 
@@ -206,38 +151,38 @@ body {
     margin: 30px 0;
 }
 
-.quince-decoration {
+.black-decoration {
     width: 30px;
     height: 2px;
-    background-color: #FFD700;
+    background-color: #000;
     margin: 0 15px;
     position: relative;
 }
 
-.quince-decoration:before,
-.quince-decoration:after {
+.black-decoration:before,
+.black-decoration:after {
     content: '';
     position: absolute;
     width: 8px;
     height: 8px;
-    border: 2px solid #FFD700;
+    border: 2px solid #000;
     border-radius: 50%;
     top: -3px;
 }
 
-.quince-decoration.left:before {
+.black-decoration.left:before {
     left: -5px;
 }
 
-.quince-decoration.left:after {
+.black-decoration.left:after {
     right: -5px;
 }
 
-.quince-decoration.right:before {
+.black-decoration.right:before {
     left: -5px;
 }
 
-.quince-decoration.right:after {
+.black-decoration.right:after {
     right: -5px;
 }
 
@@ -245,13 +190,12 @@ body {
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
     font-size: 2.2rem;
-    color: #FFD700;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    color: #000;
     text-align: center;
     animation: float 3s ease-in-out infinite;
 }
 
-/* Detalles mejorados */
+/* Detalles */
 .details {
     margin-top: 40px;
 }
@@ -266,18 +210,18 @@ body {
 .detail-item p {
     margin-left: 10px;
     font-size: 1.1rem;
-    color: #f5f5f5;
+    color: #333;
 }
 
-.gold-icon {
-    color: #FFD700;
+.black-icon {
+    color: #000;
     font-size: 1.3rem;
 }
 
-/* Botones mejorados */
+/* Botón de ubicación */
 .location-btn {
-    background: linear-gradient(135deg, #FFD700 0%, #C9A227 100%);
-    color: #1a1a1a;
+    background-color: #000;
+    color: #D4AF37;
     border: none;
     padding: 15px 25px;
     margin: 25px auto;
@@ -288,87 +232,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     font-weight: 600;
     width: 90%;
     max-width: 300px;
+    text-decoration: none;
 }
 
 .location-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 .location-btn i {
     margin-right: 10px;
 }
 
-.location-text {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    text-align: center;
-}
-
-.location-instruction {
-    font-size: 1rem;
-    color: #e0e0e0;
-    margin-bottom: 15px;
-}
-
-.address-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #FFD700;
-    border-radius: 8px;
-    resize: none;
-    height: 100px;
-    background: rgba(30, 30, 30, 0.8);
-    color: #f5f5f5;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.copy-btn {
-    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-    color: #FFD700;
-    border: 1px solid #FFD700;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    margin-top: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.copy-btn:hover {
-    background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
-}
-
-.copy-btn i {
-    margin-right: 8px;
-}
-
-.location-note {
-    font-size: 0.8rem;
-    color: #b0b0b0;
-    margin-top: 15px;
-    font-style: italic;
-}
-
-/* Countdown mejorado */
+/* Countdown */
 .countdown-section {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #FFD700;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
     padding: 25px 15px;
     margin: 40px 0;
     text-align: center;
+    color: #D4AF37;
 }
 
 .countdown-header {
@@ -381,14 +268,8 @@ body {
 .countdown-header h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
-    color: #FFD700;
     margin: 0 15px;
     font-weight: 400;
-}
-
-.countdown-header i {
-    color: #FFD700;
-    font-size: 1.4rem;
 }
 
 .countdown-timer {
@@ -399,8 +280,8 @@ body {
 }
 
 .time-box {
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #D4AF37;
     padding: 15px 10px;
     border-radius: 10px;
     min-width: 70px;
@@ -411,19 +292,19 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     font-weight: bold;
-    color: #FFD700;
+    color: #FFF;
     display: block;
 }
 
 .time-box small {
     font-size: 0.9rem;
-    color: #e0e0e0;
+    color: #D4AF37;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .separator {
-    color: #FFD700;
+    color: #FFF;
     font-size: 1.8rem;
     margin: 0 5px;
     position: relative;
@@ -433,11 +314,10 @@ body {
 .countdown-message {
     font-family: 'Dancing Script', cursive;
     font-size: 1.5rem;
-    color: #FFD700;
     margin-top: 20px;
 }
 
-/* Footer mejorado */
+/* Footer */
 .footer {
     text-align: center;
     padding: 30px 20px 20px;
@@ -445,46 +325,18 @@ body {
     position: relative;
 }
 
-.footer-decoration {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.footer-ball {
-    width: 12px;
-    height: 12px;
-    background-color: #FFD700;
-    border-radius: 50%;
-    position: relative;
-}
-
-.footer-line {
-    width: 50px;
-    height: 1px;
-    background-color: #FFD700;
-    margin: 0 5px;
-}
-
 .footer-message {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 1.1rem;
-    color: #FFD700;
+    color: #000;
     margin-bottom: 15px;
 }
 
 .footer-note {
     font-size: 0.9rem;
-    color: #b0b0b0;
+    color: #333;
     margin-bottom: 10px;
-}
-
-.footer-copyright {
-    font-size: 0.8rem;
-    color: #666;
-    margin-top: 20px;
 }
 
 /* Animaciones */
@@ -492,23 +344,6 @@ body {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
-}
-
-/* Efecto de confeti dorado */
-.confetti {
-    position: fixed;
-    width: 15px;
-    height: 15px;
-    background-color: #FFD700;
-    opacity: 0.8;
-    animation: fall linear forwards;
-    z-index: 9999;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(360deg);
-    }
 }
 
 /* Responsive */
