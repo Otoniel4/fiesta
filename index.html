@@ -3,65 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de 15 Años</title>
+    <title>Jarieth Ibeth - Mis XV Años Dorados</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="dress-3d-container" id="dress-container"></div>
+    <div class="gold-sparkle"></div>
+    <div class="gold-sparkle"></div>
+    <div class="gold-sparkle"></div>
     
-    <div class="invitation-overlay">
-        <div class="invitation-card">
-            <div class="header">
-                <h1 class="title">Mis XV Años</h1>
-                <div class="divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-line"></div>
-                </div>
-                <h2 class="name">Valentina</h2>
+    <div class="container">
+        <header class="header">
+            <div class="crown-icon">
+                <i class="fas fa-crown"></i>
             </div>
-            
-            <div class="details">
-                <div class="detail-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <p>25 de Noviembre 2023</p>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-clock"></i>
-                    <p>7:00 PM</p>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Salón Las Dalias</p>
+            <h1 class="title">Jarieth Ibeth</h1>
+            <h2 class="subtitle">Mis XV Años Dorados</h2>
+            <div class="gold-border"></div>
+        </header>
+
+        <main class="main-content">
+            <div class="invitation-card">
+                <div class="card-decoration top-left"></div>
+                <div class="card-decoration top-right"></div>
+                <div class="card-decoration bottom-left"></div>
+                <div class="card-decoration bottom-right"></div>
+                
+                <div class="card-content">
+                    <p class="invitation-text">Con inmensa alegría y bendición de Dios</p>
+                    <div class="parents-container">
+                        <p class="parents">Adolfo Pérez Quispe</p>
+                        <p class="and">&</p>
+                        <p class="parents">Ibeth Ledezma Mérida</p>
+                    </div>
+                    <p class="invitation-text">tienen el honor de invitarte a ser parte de este sueño hecho realidad</p>
+                    
+                    <div class="quinceanera-container">
+                        <div class="quince-decoration left"></div>
+                        <p class="quinceanera">Jarieth Ibeth Pérez Ledezma</p>
+                        <div class="quince-decoration right"></div>
+                    </div>
+                    
+                    <p class="invitation-text">En la celebración de mis XV primaveras</p>
+                    <p class="invitation-text">Donde daré el paso de niña a mujer</p>
+                    <p class="invitation-text">Y quiero compartir este momento tan especial contigo</p>
+                    
+                    <div class="details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt gold-icon"></i>
+                            <p>5 de Julio de 2025</p>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock gold-icon"></i>
+                            <p>6:00 PM</p>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-glass-cheers gold-icon"></i>
+                            <p>Recepcíón: Salón de Eventos "Girasoles"</p>
+                        </div>
+                        
+                        <button id="locationBtn" class="location-btn">
+                            <i class="fas fa-map-marker-alt"></i> Ver ubicación exacta
+                        </button>
+                        
+                        <div id="locationText" class="location-text hidden">
+                            <p class="location-instruction">Por favor copia la ubicación exacta desde Google Maps:</p>
+                            <textarea id="addressInput" class="address-input" placeholder="Pega aquí la dirección completa..."></textarea>
+                            <button id="copyBtn" class="copy-btn">
+                                <i class="fas fa-copy"></i> Copiar al portapapeles
+                            </button>
+                            <p class="location-note">* Te recomendamos llegar 30 minutos antes para el protocolo de ingreso</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="rsvp-section">
-                <p>Confirma tu asistencia antes del 20 de Noviembre jajaja</p>
-                <div class="rsvp-buttons">
-                    <button id="confirm-btn">Asistiré <i class="fas fa-heart"></i></button>
-                    <button id="decline-btn">Lamentablemente no</button>
+
+            <div class="countdown-section">
+                <div class="countdown-header">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>La cuenta regresiva ha comenzado</h3>
+                    <i class="fas fa-hourglass-half"></i>
                 </div>
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <small>Días</small>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <small>Horas</small>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <small>Minutos</small>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <small>Segundos</small>
+                    </div>
+                </div>
+                <p class="countdown-message">¡Esperamos verte en mi noche dorada!</p>
             </div>
-            
-            <div class="footer">
-                <p>"Este día será mágico con tu presencia :2</p>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-decoration">
+                <div class="footer-ball"></div>
+                <div class="footer-line"></div>
+                <div class="footer-ball"></div>
+                <div class="footer-line"></div>
+                <div class="footer-ball"></div>
             </div>
-        </div>
-    </div>
-    
-    <div id="confirmation-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 id="modal-title">¡Gracias!</h3>
-            <p id="modal-message">Tu respuesta ha sido registrada :D</p>
-        </div>
+            <p class="footer-message">"Porque todo lo puedo en Cristo que me fortalece" - Filipenses 4:13</p>
+            <p class="footer-note">Confirmar asistencia al +51 987 654 321</p>
+            <p class="footer-copyright">© Mis XV Años Dorados - 2025</p>
+        </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

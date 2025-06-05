@@ -1,174 +1,181 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Configuración de Three.js para el vestido 3D
-    const container = document.getElementById('dress-container');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // Mostrar/ocultar ubicación con animación
+    const locationBtn = document.getElementById('locationBtn');
+    const locationText = document.getElementById('locationText');
     
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-    
-    // Iluminación
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    scene.add(ambientLight);
-    
-    const directionalLight1 = new THREE.DirectionalLight(0xffd700, 0.8);
-    directionalLight1.position.set(1, 1, 1);
-    scene.add(directionalLight1);
-    
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight2.position.set(-1, -1, -1);
-    scene.add(directionalLight2);
-    
-    // Creación del vestido 3D
-    createDress();
-    
-    camera.position.z = 5;
-    
-    // Controls para animación automática
-    let angle = 0;
-    const radius = 5;
-    
-    // Animación
-    function animate() {
-        requestAnimationFrame(animate);
-        
-        // Rotación automática
-        angle += 0.002;
-        camera.position.x = radius * Math.sin(angle);
-        camera.position.z = radius * Math.cos(angle);
-        camera.lookAt(0, 0, 0);
-        
-        renderer.render(scene, camera);
-    }
-    
-    animate();
-    
-    // Función para crear el vestido
-    function createDress() {
-        const group = new THREE.Group();
-        
-        // Parte superior del vestido (corsé)
-        const topGeometry = new THREE.CylinderGeometry(0.8, 0.5, 1.5, 32, 1, true);
-        const topMaterial = new THREE.MeshPhongMaterial({ 
-            color: 0x111111,
-            specular: 0xffd700,
-            shininess: 100,
-            side: THREE.DoubleSide
-        });
-        const top = new THREE.Mesh(topGeometry, topMaterial);
-        top.rotation.x = Math.PI / 2;
-        top.position.y = 0.8;
-        group.add(top);
-        
-        // Falda (parte principal)
-        const skirtGeometry = new THREE.ConeGeometry(2, 3, 64, 1, true);
-        const skirtMaterial = new THREE.MeshPhongMaterial({
-            color: 0x111111,
-            specular: 0xffd700,
-            shininess: 50,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.9
-        });
-        const skirt = new THREE.Mesh(skirtGeometry, skirtMaterial);
-        skirt.position.y = -1.2;
-        group.add(skirt);
-        
-        // Capas adicionales para efecto volumétrico
-        for (let i = 0; i < 3; i++) {
-            const layerGeometry = new THREE.ConeGeometry(2.1 + i * 0.1, 3.2, 64, 1, true);
-            const layerMaterial = new THREE.MeshPhongMaterial({
-                color: 0x000000,
-                specular: 0xffd700,
-                shininess: 30,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.3 - (i * 0.1)
-            });
-            const layer = new THREE.Mesh(layerGeometry, layerMaterial);
-            layer.position.y = -1.2 - (i * 0.05);
-            layer.rotation.z = Math.random() * 0.1;
-            group.add(layer);
-        }
-        
-        // Decoraciones doradas
-        addDressDecorations(group);
-        
-        scene.add(group);
-    }
-    
-    // Función para añadir decoraciones al vestido
-    function addDressDecorations(group) {
-        const decorationGeometry = new THREE.SphereGeometry(0.05, 16, 16);
-        const decorationMaterial = new THREE.MeshPhongMaterial({
-            color: 0xffd700,
-            emissive: 0xffcc00,
-            emissiveIntensity: 0.5,
-            shininess: 100
-        });
-        
-        // Patrón de decoraciones
-        const pattern = [
-            { x: 0.5, y: 0.2, z: 0 },
-            { x: -0.5, y: 0.2, z: 0 },
-            { x: 0, y: -0.5, z: 0.8 },
-            { x: 0, y: -0.5, z: -0.8 },
-            { x: 0.7, y: -0.8, z: 0.3 },
-            { x: -0.7, y: -0.8, z: 0.3 },
-            { x: 0.7, y: -0.8, z: -0.3 },
-            { x: -0.7, y: -0.8, z: -0.3 }
-        ];
-        
-        pattern.forEach(pos => {
-            const decoration = new THREE.Mesh(decorationGeometry, decorationMaterial);
-            decoration.position.set(pos.x, pos.y, pos.z);
-            
-            // Animación individual
-            decoration.userData = {
-                speed: 0.01 + Math.random() * 0.02,
-                angle: Math.random() * Math.PI * 2
-            };
-            
-            group.add(decoration);
-        });
-    }
-    
-    // Manejo del responsive
-    window.addEventListener('resize', function() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-    
-    // Funcionalidad del modal
-    const modal = document.getElementById('confirmation-modal');
-    const confirmBtn = document.getElementById('confirm-btn');
-    const declineBtn = document.getElementById('decline-btn');
-    const closeModal = document.querySelector('.close-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalMessage = document.getElementById('modal-message');
-    
-    confirmBtn.addEventListener('click', function() {
-        modalTitle.textContent = "¡Confirmado!";
-        modalMessage.textContent = "Gracias por confirmar tu asistencia. Estamos emocionados de celebrar contigo este día tan especial.";
-        modal.style.display = "flex";
-    });
-    
-    declineBtn.addEventListener('click', function() {
-        modalTitle.textContent = "Lo lamentamos";
-        modalMessage.textContent = "Sentimos mucho que no puedas asistir. Agradecemos que nos hayas informado. ¡Te extrañaremos!";
-        modal.style.display = "flex";
-    });
-    
-    closeModal.addEventListener('click', function() {
-        modal.style.display = "none";
-    });
-    
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
+    locationBtn.addEventListener('click', function() {
+        locationText.classList.toggle('hidden');
+        if (!locationText.classList.contains('hidden')) {
+            animateLocationAppearance();
+            createGoldenConfetti();
         }
     });
+    
+    function animateLocationAppearance() {
+        locationText.style.opacity = '0';
+        locationText.style.transform = 'translateY(20px)';
+        locationText.style.transition = 'none';
+        
+        setTimeout(() => {
+            locationText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            locationText.style.opacity = '1';
+            locationText.style.transform = 'translateY(0)';
+        }, 10);
+    }
+    
+    // Copiar dirección al portapapeles con mejor feedback
+    const copyBtn = document.getElementById('copyBtn');
+    const addressInput = document.getElementById('addressInput');
+    
+    copyBtn.addEventListener('click', function() {
+        addressInput.select();
+        document.execCommand('copy');
+        
+        // Feedback visual mejorado
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+        copyBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)';
+        copyBtn.style.border = '1px solid #4CAF50';
+        
+        setTimeout(function() {
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar al portapapeles';
+            copyBtn.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)';
+            copyBtn.style.border = '1px solid #FFD700';
+        }, 2000);
+    });
+    
+    // Countdown mejorado
+    function updateCountdown() {
+        const targetDate = new Date('July 5, 2025 18:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        // Cálculos de tiempo
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Mostrar resultados con animación
+        animateCountdownChange('days', days.toString().padStart(2, '0'));
+        animateCountdownChange('hours', hours.toString().padStart(2, '0'));
+        animateCountdownChange('minutes', minutes.toString().padStart(2, '0'));
+        animateCountdownChange('seconds', seconds.toString().padStart(2, '0'));
+        
+        // Si la cuenta regresiva termina
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.querySelector('.countdown-header h3').textContent = '¡La celebración ha comenzado!';
+            document.querySelector('.countdown-timer').innerHTML = 
+                '<p class="celebration-message">¡Gracias por ser parte de este sueño dorado!</p>';
+        }
+    }
+    
+    function animateCountdownChange(id, newValue) {
+        const element = document.getElementById(id);
+        if (element.textContent !== newValue) {
+            element.style.transform = 'scale(1.2)';
+            element.style.color = '#FFF';
+            setTimeout(() => {
+                element.textContent = newValue;
+                element.style.transform = 'scale(1)';
+                element.style.color = '#FFD700';
+            }, 200);
+        }
+    }
+    
+    // Actualizar cada segundo
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    
+    // Efecto de confeti dorado mejorado
+    function createGoldenConfetti() {
+        const confettiCount = 100;
+        const container = document.querySelector('.container');
+        
+        for (let i = 0; i < confettiCount; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            
+            // Formas variadas
+            const shapes = ['circle', 'square', 'triangle', 'star'];
+            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+            
+            // Posición inicial aleatoria
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = -20 + 'px';
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 15 + 5;
+            
+            // Color dorado con variaciones
+            const goldVariations = ['#FFD700', '#FFDF00', '#F5D76E', '#E6C229'];
+            const randomGold = goldVariations[Math.floor(Math.random() * goldVariations.length)];
+            
+            // Configurar según la forma
+            switch(randomShape) {
+                case 'circle':
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.backgroundColor = randomGold;
+                    break;
+                case 'square':
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.backgroundColor = randomGold;
+                    confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+                    break;
+                case 'triangle':
+                    confetti.style.width = '0';
+                    confetti.style.height = '0';
+                    confetti.style.borderLeft = size/2 + 'px solid transparent';
+                    confetti.style.borderRight = size/2 + 'px solid transparent';
+                    confetti.style.borderBottom = size + 'px solid ' + randomGold;
+                    break;
+                case 'star':
+                    confetti.innerHTML = '★';
+                    confetti.style.fontSize = size + 'px';
+                    confetti.style.color = randomGold;
+                    confetti.style.lineHeight = '1';
+                    confetti.style.background = 'transparent';
+                    break;
+            }
+            
+            // Animación personalizada
+            const animationDuration = Math.random() * 3 + 2;
+            confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+            confetti.style.animationDelay = Math.random() + 's';
+            
+            container.appendChild(confetti);
+            
+            // Eliminar después de la animación
+            setTimeout(() => {
+                confetti.remove();
+            }, animationDuration * 1000);
+        }
+    }
+    
+    // Efecto de brillo intermitente en elementos dorados
+    function addGoldShineEffect() {
+        const goldElements = document.querySelectorAll('.title, .subtitle, .quinceanera, .crown-icon');
+        
+        goldElements.forEach(el => {
+            setInterval(() => {
+                const intensity = 0.7 + Math.random() * 0.5;
+                const blur = 5 + Math.random() * 10;
+                el.style.textShadow = `0 0 ${blur}px rgba(255, 215, 0, ${intensity})`;
+            }, 2000);
+        });
+    }
+    
+    addGoldShineEffect();
+    
+    // Efecto de carga inicial
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
 });
+
+// Estilo inicial para el body
+document.body.style.opacity = '0';
+document.body.style.transition = 'opacity 1s ease';
