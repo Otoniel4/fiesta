@@ -11,9 +11,13 @@
 <body>
     <!-- Fondo Dorado con Vestidos Animados -->
     <div class="gold-bg"></div>
-    <div class="floating-dress dress1"></div>
-    <div class="floating-dress dress2"></div>
-    <div class="floating-dress dress3"></div>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<!-- Reproductor de música invisible -->
+<audio id="background-music" loop autoplay>
+    <source src="thalia.mp3" type="audio/mpeg">
+</audio>
     
     <div class="container">
         <!-- Header Animado -->
@@ -36,9 +40,9 @@
                 
                 <!-- Sección de Padres con Nueva Frase -->
                 <div class="parents-section">
-                    <p class="parent-name">Adolfo Pérez Quispe</p>
-                    <p class="and-symbol">&</p>
-                    <p class="parent-name">Ibeth Ledezma Mérida</p>
+                    <p class="parent-name luminous">Adolfo Pérez Quispe</p>
+                    <p class="and-symbol luminous">&</p>
+                    <p class="parent-name luminous">Ibeth Ledezma Mérida</p>
                     <p class="invitation-phrase">Invitamos a los XV años de nuestra princesa</p>
                 </div>
                 
@@ -50,17 +54,22 @@
                 </div>
                 
                 <!-- Detalles del Evento -->
-                <div class="event-details">
-                    <div class="detail-item">
+                <div class="event-details" >
+                    <div class="detail-item" style="text-align: center;">
                         <i class="fas fa-calendar-alt"></i>
                         <p>5 de Julio de 2025</p>
                     </div>
-                    <div class="detail-item">
+                    <div class="detail-item" style="text-align: center;">
                         <i class="fas fa-clock"></i>
                         <p>6:00 PM</p>
                     </div>
+                        <div class="detail-item" style="text-align: center;">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Quillacollo, calle Carreras y sucre <br>(pasando la clinica Alvarez)</p>
+                    </div>
+                    
                     <a href="https://maps.app.goo.gl/Srgde1JbhUAf2Rqc9" target="_blank" class="gold-button">
-                        <i class="fas fa-map-marker-alt"></i> Ver ubicación
+                        <i class="fas fa-map-marker-alt"></i> Ver ubicación en el mapa
                     </a>
                 </div>
             </div>
@@ -101,20 +110,14 @@
 
     <script src="script.js"></script>
 
+<!-- Lluvia de brillos dorados -->
+<div class="golden-shower"></div>
 
-<!-- Vestidos Animados -->
-<div class="floating-dress dress1">
-  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400'><path d='M100,20 C150,20 180,60 180,120 C180,180 150,220 100,220 C50,220 20,180 20,120 C20,60 50,20 100,20 Z' fill='none' stroke='%23000' stroke-width='2'/><path d='M30,220 L170,220 L160,400 L40,400 Z' fill='none' stroke='%23000' stroke-width='2'/><path d='M100,220 L100,400' stroke='%23000' stroke-width='1.5'/><circle cx='100' cy='120' r='10' fill='none' stroke='%23000' stroke-width='1.5'/></svg>" alt="Vestido de XV">
-</div>
+<!-- Decoraciones flotantes -->
+<div class="floating-decor decor1">✦</div>
+<div class="floating-decor decor2">♫</div>
+<div class="floating-decor decor3">★</div>
+<div class="floating-decor decor4">♥</div>
 
-<div class="floating-dress dress2">
-  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400'><path d='M100,30 C130,30 160,70 160,130 C160,190 130,230 100,230 C70,230 40,190 40,130 C40,70 70,30 100,30 Z' fill='none' stroke='%23000' stroke-width='2'/><path d='M50,230 L150,230 L145,400 L55,400 Z' fill='none' stroke='%23000' stroke-width='2'/><path d='M70,150 L130,150' stroke='%23000' stroke-width='1.5'/></svg>" alt="Vestido de XV">
-</div>
-
-<!-- Notas Musicales Animadas -->
-<div class="music-note note1">♪</div>
-<div class="music-note note2">♫</div>
-<div class="music-note note3">♩</div>
-<div class="music-note note4">♬</div>
 </body>
 </html>

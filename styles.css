@@ -357,18 +357,6 @@ body {
     }
 }
 
-/* Vestidos 3D Animados */
-.dress {
-    position: fixed;
-    width: 250px;
-    height: 400px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 400"><path d="M125,20 C180,20 220,60 220,115 C220,170 180,210 125,210 C70,210 30,170 30,115 C30,60 70,20 125,20 Z" fill="none" stroke="%23000" stroke-width="1.5"/><path d="M40,210 L210,210 L200,400 L50,400 Z" fill="none" stroke="%23000" stroke-width="1.5"/><path d="M125,210 L125,400" stroke="%23000" stroke-width="1" stroke-dasharray="5,5"/></svg>');
-    opacity: 0.2;
-    animation: floatDress 18s infinite ease-in-out;
-    animation-delay: var(--delay);
-    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7));
-}
-
 @keyframes floatDress {
     0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
     25% { transform: translateY(-30px) rotate(2deg) scale(1.02); }
@@ -376,143 +364,95 @@ body {
     75% { transform: translateY(20px) rotate(-2deg) scale(0.98); }
 }
 
-/* Título Holográfico */
-.holographic-title {
-    position: relative;
-    display: inline-block;
-    font-family: 'Abril Fatface', cursive;
-    font-size: 4.5rem;
-    perspective: 500px;
-}
-
-.hologram-layer {
-    color: transparent;
-    text-shadow: 0 0 10px #FFD700, 2px 2px 0 #000;
-    position: relative;
-    display: block;
-    animation: hologramEffect 3s infinite alternate;
-}
-
-.hologram-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: rgba(255, 215, 0, 0.3);
-    text-shadow: 0 0 20px #FFD700;
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-    animation: hologramGlow 2s infinite alternate-reverse;
-}
-
-@keyframes hologramEffect {
-    0% { transform: rotateX(5deg); }
-    100% { transform: rotateX(-5deg); }
-}
-
-/* Efecto de Niebla Dorada */
-body:after {
-    content: '';
+/* Lluvia de brillos dorados */
+.golden-shower {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-    animation: fogRotation 60s infinite linear;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100vh;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        rgba(255, 215, 0, 0.8), 
+        transparent);
+    animation: shineRain 3s infinite;
     z-index: -1;
 }
 
-@keyframes fogRotation {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+@keyframes shineRain {
+    0% { top: -100%; opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
 }
 
-/* Vestidos Animados Mejorados */
-.floating-dress {
-  position: fixed;
-  width: 150px;
-  height: 300px;
-  opacity: 0.15;
-  z-index: -1;
-  animation: floatDress 25s infinite linear;
-  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+/* Decoraciones flotantes */
+.floating-decor {
+    position: fixed;
+    font-size: 1.8rem;
+    color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    animation: floatDecor 15s infinite linear;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+    opacity: 0.7;
 }
 
-.floating-dress img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.decor1 { /* Diamante */
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
 }
 
-.dress1 {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
+.decor2 { /* Nota musical */
+    top: 70%;
+    left: 85%;
+    animation-delay: 3s;
 }
 
-.dress2 {
-  top: 60%;
-  left: 75%;
-  animation-delay: 7s;
-  width: 120px;
-  height: 240px;
+.decor3 { /* Estrella */
+    top: 40%;
+    left: 20%;
+    animation-delay: 5s;
+    font-size: 2.2rem;
 }
 
-@keyframes floatDress {
-  0% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-40px) rotate(3deg); }
-  50% { transform: translateY(0) rotate(0deg); }
-  75% { transform: translateY(30px) rotate(-3deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+.decor4 { /* Corazón */
+    top: 80%;
+    left: 75%;
+    animation-delay: 7s;
+    color: rgba(0, 0, 0, 0.8);
 }
 
-/* Notas Musicales Animadas */
-.music-note {
-  position: fixed;
-  font-size: 2.5rem;
-  color: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-  animation: floatNote 15s infinite linear;
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
-  opacity: 0.7;
+@keyframes floatDecor {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-40px) rotate(15deg) scale(1.1); }
+    50% { transform: translateY(0) rotate(0deg) scale(1); }
+    75% { transform: translateY(40px) rotate(-15deg) scale(0.9); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
 }
 
-.note1 {
-  top: 20%;
-  left: 80%;
-  animation-delay: 0s;
+/* Efecto luminoso para nombres */
+.luminous {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    animation: glow 2s infinite alternate;
 }
 
-.note2 {
-  top: 70%;
-  left: 15%;
-  animation-delay: 3s;
-  font-size: 3rem;
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
+    to { text-shadow: 0 0 15px rgba(212, 175, 55, 1); }
 }
 
-.note3 {
-  top: 40%;
-  left: 85%;
-  animation-delay: 5s;
-  font-size: 2rem;
-}
-
-.note4 {
-  top: 80%;
-  left: 90%;
-  animation-delay: 7s;
-}
-
-@keyframes floatNote {
-  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
-  25% { transform: translateY(-50px) rotate(15deg) scale(1.1); opacity: 1; }
-  50% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
-  75% { transform: translateY(50px) rotate(-15deg) scale(0.9); opacity: 0.5; }
-  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
-}
-
-/* Efecto de Brillo en Elementos Decorativos */
-.floating-dress:hover, .music-note:hover {
-  opacity: 1;
-  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.9));
-  transition: all 0.5s ease;
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .floating-decor {
+        font-size: 1.5rem;
+    }
+    
+    .golden-shower {
+        width: 1px;
+    }
+    
+    .parents-section {
+        font-size: 0.9em;
+    }
 }

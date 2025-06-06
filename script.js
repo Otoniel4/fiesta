@@ -52,52 +52,81 @@ document.addEventListener('DOMContentLoaded', function() {
         goldButton.style.transform = 'translateY(0)';
     });
 });
-
-// Transición suave al cargar
-document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 1s ease';
-// Efecto de Partículas Interactivas
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: "#D4AF37" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#D4AF37", opacity: 0.3, width: 1 },
-        move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" }
-        }
-    }
-});
-
-// Efecto de sonido al pasar mouse sobre notas musicales
-document.querySelectorAll('.music-note').forEach(note => {
-    note.addEventListener('mouseenter', () => {
-        const noteSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
-        noteSound.volume = 0.2;
-        noteSound.play();
-        
-        // Efecto visual
-        note.style.transform = 'scale(1.5)';
-        setTimeout(() => {
-            note.style.transform = 'scale(1)';
-        }, 300);
-    });
-});
-
-// Movimiento parallax para vestidos
-window.addEventListener('mousemove', (e) => {
-    const xPos = e.clientX / window.innerWidth;
-    const yPos = e.clientY / window.innerHeight;
+// Crear brillos dorados adicionales
+function createGoldenParticles() {
+    const container = document.querySelector('.container');
     
-    document.querySelectorAll('.floating-dress').forEach((dress, index) => {
-        const speed = index * 0.5 + 1;
-        dress.style.transform = `translate(${xPos * 20 * speed}px, ${yPos * 20 * speed}px)`;
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'golden-particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(particle);
+    }
+}
+
+// Efecto al hacer scroll
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    document.querySelector('.golden-shower').style.opacity = 1 - scrollPosition / 300;
+});
+
+// Iniciar efectos
+document.addEventListener('DOMContentLoaded', () => {
+    createGoldenParticles();
+    
+    // Efecto de sonido al tocar decoraciones
+    document.querySelectorAll('.floating-decor').forEach(decor => {
+        decor.addEventListener('click', () => {
+            const noteSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...');
+            noteSound.volume = 0.1;
+            noteSound.play();
+            
+            decor.style.transform = 'scale(1.5)';
+            setTimeout(() => decor.style.transform = 'scale(1)', 300);
+        });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const music = document.getElementById('background-music');
+    
+    // Configuración inicial
+    music.volume = 0.5; // Volumen al 50% para no ser intrusivo
+    
+    // Intenta reproducir automáticamente
+    const playMusic = () => {
+        music.play()
+            .then(() => console.log('Música reproduciéndose automáticamente'))
+            .catch(error => {
+                console.log('Autoplay bloqueado:', error);
+                // Si falla, muestra un mensaje elegante (sin botones)
+                const toast = document.createElement('div');
+                toast.innerHTML = 'Presiona en cualquier parte para activar la música';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'rgba(0,0,0,0.7)';
+                toast.style.color = '#D4AF37';
+                toast.style.padding = '10px 20px';
+                toast.style.borderRadius = '20px';
+                toast.style.zIndex = '1000';
+                toast.style.animation = 'fadeInOut 3s forwards';
+                document.body.appendChild(toast);
+                
+                // Elimina el mensaje después de 3 segundos
+                setTimeout(() => toast.remove(), 3000);
+            });
+    };
+    
+    // Intenta reproducir al hacer cualquier interacción
+    document.body.addEventListener('click', function firstInteraction() {
+        playMusic();
+        document.body.removeEventListener('click', firstInteraction);
+    }, { once: true });
+    
+    // También intenta reproducir al cargar (puede fallar en algunos navegadores)
+    playMusic();
 });
