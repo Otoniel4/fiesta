@@ -1,78 +1,69 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Animación de texto de invitación
-    const invitationTexts = document.querySelectorAll('.invitation-text');
-    
-    function animateInvitationText() {
-        invitationTexts.forEach((text, index) => {
+    // Animación de Texto de Invitación
+    const animateText = () => {
+        const texts = document.querySelectorAll('.animate-text');
+        texts.forEach((text, index) => {
             setTimeout(() => {
-                text.classList.add('animate-text');
+                text.style.opacity = '1';
+                text.style.transform = 'translateY(0)';
             }, index * 500);
         });
-    }
-    
-    // Countdown premium
-    function updateCountdown() {
+    };
+
+    // Countdown Animado
+    const updateCountdown = () => {
         const targetDate = new Date('July 5, 2025 18:00:00').getTime();
         const now = new Date().getTime();
         const distance = targetDate - now;
-        
-        // Cálculos de tiempo
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        // Mostrar resultados con animación
-        animateCountdownChange('days', days.toString().padStart(2, '0'));
-        animateCountdownChange('hours', hours.toString().padStart(2, '0'));
-        animateCountdownChange('minutes', minutes.toString().padStart(2, '0'));
-        animateCountdownChange('seconds', seconds.toString().padStart(2, '0'));
-        
-        // Si la cuenta regresiva termina
+
+        // Animación al Cambiar Números
+        const animateNumber = (id, value) => {
+            const element = document.getElementById(id);
+            if (element.textContent !== value) {
+                element.style.transform = 'scale(1.3)';
+                setTimeout(() => {
+                    element.textContent = value;
+                    element.style.transform = 'scale(1)';
+                }, 200);
+            }
+        };
+
+        animateNumber('days', days.toString().padStart(2, '0'));
+        animateNumber('hours', hours.toString().padStart(2, '0'));
+        animateNumber('minutes', minutes.toString().padStart(2, '0'));
+        animateNumber('seconds', seconds.toString().padStart(2, '0'));
+
         if (distance < 0) {
             clearInterval(countdownInterval);
-            document.querySelector('.countdown-header h3').textContent = '¡La celebración ha comenzado!';
-            document.querySelector('.countdown-timer').innerHTML = 
-                '<p class="celebration-message">¡Gracias por ser parte de este sueño dorado!</p>';
+            document.querySelector('.countdown-section h3').textContent = '¡La Fiesta ha Comenzado!';
+            document.querySelector('.countdown-timer').innerHTML = '<p>¡Gracias por Celebrar con Nosotros!</p>';
         }
-    }
-    
-    function animateCountdownChange(id, newValue) {
-        const element = document.getElementById(id);
-        if (element.textContent !== newValue) {
-            element.style.transform = 'scale(1.3)';
-            element.style.color = '#D4AF37';
-            setTimeout(() => {
-                element.textContent = newValue;
-                element.style.transform = 'scale(1)';
-                element.style.color = '#FFF';
-            }, 300);
-        }
-    }
-    
-    // Efecto de brillo en botón dorado
-    const goldenBtn = document.querySelector('.golden-btn');
-    goldenBtn.addEventListener('mouseenter', function() {
-        this.querySelector('i').style.transform = 'rotate(15deg)';
+    };
+
+    // Efecto de Brillo en Botón
+    const goldenButton = document.querySelector('.golden-button');
+    goldenButton.addEventListener('mouseenter', () => {
+        goldenButton.style.boxShadow = '0 0 20px #FFD700';
     });
-    
-    goldenBtn.addEventListener('mouseleave', function() {
-        this.querySelector('i').style.transform = 'rotate(0)';
+    goldenButton.addEventListener('mouseleave', () => {
+        goldenButton.style.boxShadow = '0 5px 20px rgba(255, 215, 0, 0.5)';
     });
-    
-    // Iniciar animaciones
-    setTimeout(animateInvitationText, 1000);
-    
-    // Actualizar countdown cada segundo
+
+    // Iniciar Animaciones
+    setTimeout(animateText, 500);
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
-    
-    // Efecto de carga inicial
+
+    // Efecto de Carga Suave
     setTimeout(() => {
         document.body.style.opacity = '1';
-    }, 100);
+    }, 200);
 });
 
-// Estilo inicial para el body
 document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 1.5s ease';
+document.body.style.transition = 'opacity 1s ease';
