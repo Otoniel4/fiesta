@@ -1,4 +1,4 @@
-/* Estilo General con Fondo Dorado Brillante */
+/* Estilos Generales */
 * {
     margin: 0;
     padding: 0;
@@ -6,218 +6,231 @@
 }
 
 body {
-    background: #000;
-    color: #fff;
     font-family: 'Playfair Display', serif;
+    color: #000;
     overflow-x: hidden;
+    background: #000;
 }
 
-/* Fondo Dorado con Efecto de Luz */
-.golden-bg {
+/* Fondo Dorado Brillante */
+.gold-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, #D4AF37 0%, #9C7C30 100%);
-    z-index: -2;
+    background: radial-gradient(ellipse at center, #D4AF37 0%, #F5D06D 100%);
+    z-index: -3;
 }
 
-/* Partículas Doradas Flotantes */
-.gold-particles {
+/* Vestidos Animados */
+.floating-dress {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="%23FFFFFF" opacity="0.7"/><circle cx="50" cy="50" r="1.5" fill="%23FFFFFF" opacity="0.8"/><circle cx="80" cy="30" r="1" fill="%23FFFFFF" opacity="0.6"/><circle cx="30" cy="70" r="1" fill="%23FFFFFF" opacity="0.7"/><circle cx="70" cy="80" r="1.5" fill="%23FFFFFF" opacity="0.8"/></svg>');
-    background-size: 100px 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
     z-index: -1;
-    opacity: 0.4;
-    animation: particleMove 100s linear infinite;
+    animation: floatDress 25s infinite linear;
 }
 
-@keyframes particleMove {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; }
+.dress1 {
+    width: 200px;
+    height: 300px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,10 C70,10 85,25 85,45 C85,65 70,80 50,80 C30,80 15,65 15,45 C15,25 30,10 50,10 Z" fill="none" stroke="%23000" stroke-width="2"/><path d="M20,80 L80,80 L75,150 L25,150 Z" fill="none" stroke="%23000" stroke-width="2"/></svg>');
+    top: 10%;
+    left: 5%;
 }
 
-/* Estrellas Brillantes Animadas */
-.stars {
-    position: fixed;
-    width: 3px;
-    height: 3px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px #FFD700;
-    animation: twinkle 3s infinite alternate;
-    z-index: -1;
-}
-
-.stars:nth-child(1) {
-    top: 20%;
-    left: 15%;
-    animation-delay: 0.5s;
-}
-
-.stars:nth-child(2) {
+.dress2 {
+    width: 180px;
+    height: 270px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,5 C75,5 95,30 95,60 C95,90 75,115 50,115 C25,115 5,90 5,60 C5,30 25,5 50,5 Z" fill="none" stroke="%23000" stroke-width="2"/><path d="M10,115 L90,115 L80,150 L20,150 Z" fill="none" stroke="%23000" stroke-width="2"/></svg>');
     top: 60%;
     left: 70%;
-    animation-delay: 1s;
+    animation-delay: 5s;
 }
 
-.stars:nth-child(3) {
-    top: 40%;
+.dress3 {
+    width: 220px;
+    height: 330px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,15 C80,15 100,40 100,70 C100,100 80,125 50,125 C20,125 0,100 0,70 C0,40 20,15 50,15 Z" fill="none" stroke="%23000" stroke-width="2"/><path d="M5,125 L95,125 L85,150 L15,150 Z" fill="none" stroke="%23000" stroke-width="2"/></svg>');
+    top: 30%;
     left: 50%;
-    animation-delay: 1.5s;
+    animation-delay: 10s;
 }
 
-@keyframes twinkle {
-    0% { opacity: 0.3; }
-    100% { opacity: 1; }
+@keyframes floatDress {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
 }
 
-/* Encabezado con Corona Brillante */
+/* Header Estilizado */
 .header {
     text-align: center;
     padding: 30px 0;
+    animation: fadeIn 1.5s ease-out;
 }
 
-.crown-shine {
-    font-size: 3.5rem;
+.sparkle-crown {
+    font-size: 4rem;
     color: #000;
-    text-shadow: 0 0 20px #FFD700;
-    animation: shine 2s infinite alternate;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    animation: sparkle 2s infinite alternate;
+    margin-bottom: 15px;
 }
 
-@keyframes shine {
-    0% { text-shadow: 0 0 10px #FFD700; }
-    100% { text-shadow: 0 0 30px #FFD700, 0 0 50px #FFDF00; }
+@keyframes sparkle {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.1); opacity: 1; }
 }
 
-.title {
+.main-title {
     font-family: 'Parisienne', cursive;
-    font-size: 4.5rem;
+    font-size: 5rem;
     color: #000;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin: 10px 0;
+    animation: titleFloat 3s ease-in-out infinite;
 }
 
-/* Divisores Dorados */
-.divider-gold {
+@keyframes titleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.gold-divider {
     height: 2px;
     background: linear-gradient(90deg, transparent, #000, transparent);
-    margin: 20px auto;
     width: 70%;
+    margin: 20px auto;
     position: relative;
 }
 
-.divider-gold:before,
-.divider-gold:after {
+.gold-divider:before, 
+.gold-divider:after {
     content: '✧';
     position: absolute;
-    top: -12px;
     color: #000;
     font-size: 1.5rem;
+    top: -12px;
 }
 
-.divider-gold:before { left: -5px; }
-.divider-gold:after { right: -5px; }
+.gold-divider:before { left: 0; }
+.gold-divider:after { right: 0; }
 
-.divider-small {
-    width: 40%;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.5);
-    margin: 15px auto;
-}
-
-/* Tarjeta de Invitación Elegante */
+/* Tarjeta de Invitación */
 .invitation-card {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
-    padding: 30px;
-    margin: 20px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 40px 30px;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    animation: cardFloat 6s ease-in-out infinite;
 }
 
-.invitation-message p {
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.invitation-text p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin: 20px 0;
     text-align: center;
+    font-style: italic;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s forwards;
+    animation: fadeInText 1s forwards;
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
+.invitation-text p:nth-child(1) { animation-delay: 0.3s; }
+.invitation-text p:nth-child(2) { animation-delay: 0.6s; }
+.invitation-text p:nth-child(3) { animation-delay: 0.9s; }
+.invitation-text p:nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes fadeInText {
+    to { opacity: 1; }
 }
 
-.invitation-message p:nth-child(1) { animation-delay: 0.5s; }
-.invitation-message p:nth-child(2) { animation-delay: 1s; }
-.invitation-message p:nth-child(3) { animation-delay: 1.5s; }
-.invitation-message p:nth-child(4) { animation-delay: 2s; }
-
-.parents-names p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
+/* Sección de Padres */
+.parents-section {
+    margin: 30px 0;
     text-align: center;
-    margin: 10px 0;
-    color: #000;
 }
 
-.and {
-    font-family: 'Great Vibes', cursive;
+.parent-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.and-symbol {
+    font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
-    color: #000;
     margin: 5px 0;
 }
 
-.quinceanera-name h2 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem;
+.invitation-phrase {
+    font-style: italic;
+    font-size: 1.3rem;
+    margin: 15px 0;
     color: #000;
+}
+
+/* Nombre Quinceañera */
+.quinceanera-section {
+    margin: 30px 0;
+}
+
+.divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #000, transparent);
+    width: 50%;
+    margin: 20px auto;
+}
+
+.quinceanera-name {
+    font-family: 'Parisienne', cursive;
+    font-size: 3.5rem;
     text-align: center;
     margin: 20px 0;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-    animation: float 3s ease-in-out infinite;
+    color: #000;
+    animation: nameGlow 3s infinite alternate;
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+@keyframes nameGlow {
+    0% { text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+    100% { text-shadow: 0 0 15px rgba(0, 0, 0, 0.6); }
 }
 
+/* Detalles del Evento */
 .event-details {
     margin-top: 30px;
-    text-align: center;
 }
 
-.detail {
+.detail-item {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 15px 0;
 }
 
-.detail i {
-    color: #000;
+.detail-item i {
     font-size: 1.3rem;
     margin-right: 10px;
-}
-
-.detail p {
-    font-size: 1.2rem;
     color: #000;
 }
 
-/* Botón Dorado Animado */
-.golden-button {
-    background: linear-gradient(135deg, #FFD700, #C9A227);
+.detail-item p {
+    font-size: 1.2rem;
+}
+
+.gold-button {
+    background: linear-gradient(135deg, #D4AF37, #F5D06D);
     color: #000;
     border: none;
     padding: 15px 30px;
@@ -225,126 +238,281 @@ body {
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
     text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    animation: pulse 2s infinite;
 }
 
-.golden-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.7);
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
-.golden-button i {
+.gold-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gold-button i {
     margin-right: 10px;
-    transition: transform 0.3s ease;
 }
 
-.golden-button:hover i {
-    transform: rotate(15deg);
-}
-
-/* Countdown Elegante */
-.countdown-section {
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 30px 0;
+/* Countdown */
+.countdown-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 600px;
     text-align: center;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-out;
 }
 
-.countdown-section h3 {
+.countdown-container h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: #000;
     margin-bottom: 20px;
+    font-style: italic;
 }
 
-.countdown-timer {
+.countdown {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    flex-wrap: wrap;
 }
 
 .time-box {
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    padding: 15px;
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    min-width: 70px;
+    padding: 15px;
     margin: 0 5px;
+    min-width: 70px;
+    backdrop-filter: blur(2px);
 }
 
 .time-box span {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #000;
+    display: block;
 }
 
 .time-box small {
     font-size: 0.9rem;
-    color: #000;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .separator {
-    color: #000;
     font-size: 2rem;
     margin: 0 5px;
+    position: relative;
+    top: -5px;
 }
 
-/* Footer con Mensaje de Cierre */
+/* Footer */
 .footer {
     text-align: center;
     padding: 30px 0;
+    animation: fadeIn 2s ease-out;
 }
 
 .closing-message {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #000;
     margin-top: 20px;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
-/* Responsive para Móviles */
-@media (max-width: 480px) {
-    .title {
+/* Animaciones Generales */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
         font-size: 3.5rem;
     }
     
-    .quinceanera-name h2 {
-        font-size: 2.2rem;
+    .quinceanera-name {
+        font-size: 2.5rem;
     }
     
-    .countdown-timer {
-        flex-wrap: wrap;
+    .floating-dress {
+        opacity: 0.1;
     }
     
-    .time-box {
-        margin: 5px;
-    }
-    
-    .separator {
-        display: none;
+    .invitation-card, 
+    .countdown-container {
+        margin: 20px;
+        padding: 25px;
     }
 }
-.invitation-line {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: white;
-    margin: 15px 0;
-    font-style: italic;
-    text-align: center;
-    animation: fadeIn 1s forwards;
-    animation-delay: 2.5s;
-    opacity: 0;
+
+/* Vestidos 3D Animados */
+.dress {
+    position: fixed;
+    width: 250px;
+    height: 400px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 400"><path d="M125,20 C180,20 220,60 220,115 C220,170 180,210 125,210 C70,210 30,170 30,115 C30,60 70,20 125,20 Z" fill="none" stroke="%23000" stroke-width="1.5"/><path d="M40,210 L210,210 L200,400 L50,400 Z" fill="none" stroke="%23000" stroke-width="1.5"/><path d="M125,210 L125,400" stroke="%23000" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+    opacity: 0.2;
+    animation: floatDress 18s infinite ease-in-out;
+    animation-delay: var(--delay);
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7));
+}
+
+@keyframes floatDress {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-30px) rotate(2deg) scale(1.02); }
+    50% { transform: translateY(0) rotate(0deg) scale(1); }
+    75% { transform: translateY(20px) rotate(-2deg) scale(0.98); }
+}
+
+/* Título Holográfico */
+.holographic-title {
+    position: relative;
+    display: inline-block;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 4.5rem;
+    perspective: 500px;
+}
+
+.hologram-layer {
+    color: transparent;
+    text-shadow: 0 0 10px #FFD700, 2px 2px 0 #000;
+    position: relative;
+    display: block;
+    animation: hologramEffect 3s infinite alternate;
+}
+
+.hologram-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 20px #FFD700;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    animation: hologramGlow 2s infinite alternate-reverse;
+}
+
+@keyframes hologramEffect {
+    0% { transform: rotateX(5deg); }
+    100% { transform: rotateX(-5deg); }
+}
+
+/* Efecto de Niebla Dorada */
+body:after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: fogRotation 60s infinite linear;
+    z-index: -1;
+}
+
+@keyframes fogRotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Vestidos Animados Mejorados */
+.floating-dress {
+  position: fixed;
+  width: 150px;
+  height: 300px;
+  opacity: 0.15;
+  z-index: -1;
+  animation: floatDress 25s infinite linear;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+}
+
+.floating-dress img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dress1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.dress2 {
+  top: 60%;
+  left: 75%;
+  animation-delay: 7s;
+  width: 120px;
+  height: 240px;
+}
+
+@keyframes floatDress {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-40px) rotate(3deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(30px) rotate(-3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Notas Musicales Animadas */
+.music-note {
+  position: fixed;
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  animation: floatNote 15s infinite linear;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+  opacity: 0.7;
+}
+
+.note1 {
+  top: 20%;
+  left: 80%;
+  animation-delay: 0s;
+}
+
+.note2 {
+  top: 70%;
+  left: 15%;
+  animation-delay: 3s;
+  font-size: 3rem;
+}
+
+.note3 {
+  top: 40%;
+  left: 85%;
+  animation-delay: 5s;
+  font-size: 2rem;
+}
+
+.note4 {
+  top: 80%;
+  left: 90%;
+  animation-delay: 7s;
+}
+
+@keyframes floatNote {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  25% { transform: translateY(-50px) rotate(15deg) scale(1.1); opacity: 1; }
+  50% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  75% { transform: translateY(50px) rotate(-15deg) scale(0.9); opacity: 0.5; }
+  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+}
+
+/* Efecto de Brillo en Elementos Decorativos */
+.floating-dress:hover, .music-note:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.9));
+  transition: all 0.5s ease;
 }
